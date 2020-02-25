@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t savaleks/docker -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true savaleks/docker npm run test
